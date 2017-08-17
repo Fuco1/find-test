@@ -25,7 +25,7 @@ We can set up mappings for a project with multiple languages easily by major mod
  ("libs"
   (php-mode
    (ft-source-to-test-mapping . ((:path "/libs/" :suffix ".php") . (:path "/tests/php/" :suffix ".phpt")))))
- ("tests/php/libs"
+ ("tests/php/Common"
   (php-mode
    (ft-source-to-test-mapping . ((:path "/libs/" :suffix ".php") . (:path "/tests/php/" :suffix ".phpt"))))))
 ```
