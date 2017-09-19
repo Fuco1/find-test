@@ -165,6 +165,24 @@ the test suffix and vice versa; the same for the prefix.")
     (ft--get-source-file file))
    (:else (user-error "Unable to determine whether the file is source or test"))))
 
+(defun ft-get-test-file (&optional file)
+  (setq file (or file (buffer-file-name)))
+  (cond
+   ((ft-source-p file)
+    (ft--get-test-file file))
+   ((ft-test-p file)
+    file)
+   (:else (user-error "Unable to determine whether the file is source or test"))))
+
+(defun ft-get-source-file (&optional file)
+  (setq file (or file (buffer-file-name)))
+  (cond
+   ((ft-source-p file)
+    file)
+   ((ft-test-p file)
+    (ft--get-source-file file))
+   (:else (user-error "Unable to determine whether the file is source or test"))))
+
 (defun ft-find-test-or-source ()
   (interactive)
   (find-file (ft-get-test-or-source)))
