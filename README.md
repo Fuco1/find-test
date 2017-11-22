@@ -10,6 +10,28 @@ Use `ft-find-test-or-source` to jump between source and test file.
 
 The approach taken in this package is very simple.  We opted for a little bit of configuration over unnecessary complexity in trying to be too smart.  This also allows us to be much more flexible in projects using mixed languages or non-standard layouts.
 
+# Configuration
+
+Configuration is stored in a single buffer-local variable `ft-source-to-test-mapping`.  Its value should be a `cons` with two plists, where:
+
+* `car` is the description of the source file,
+* `cdr` is the description of the test file.
+
+Both of these plists can contain these keys:
+
+* `:path` - part of the full path to the file
+* `:prefix` - prefix of the file
+* `:suffix` - suffix of the file, including the extension
+
+Whether a file is a source or test file is determined by first
+matching the path to the file to the `:path` property and then
+matching the `:prefix` and `:suffix`.
+
+To compute the test file name from source file name the `:path`
+property of the source file is string-replaced with the test file
+`:path` property and then the source suffix is replaced with the test
+suffix and vice versa; the same for the prefix.
+
 # Example configuration
 
 We can set up mappings for a project with multiple languages easily by major mode.  Special subdirectories can be given different mappings as well.
@@ -29,6 +51,12 @@ We can set up mappings for a project with multiple languages easily by major mod
   (php-mode
    (ft-source-to-test-mapping . ((:path "/libs/" :suffix ".php") . (:path "/tests/php/" :suffix ".phpt"))))))
 ```
+
+These are some of the translations:
+
+- `/home/matus/app/Entity/Foo.php` => `/home/matus/tests/php/Foo.phpt`
+- `/home/matus/libs/Common/Bar.php` => `/home/matus/tests/php/Common/Bar.phpt`
+- `/home/matus/www/js/Entity/Foo.js` => `/home/matus/tests/js/Entity.spec.js`
 
 # Related work
 

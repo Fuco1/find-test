@@ -43,7 +43,7 @@ Both of these plists can contain these keys:
 - :prefix - prefix of the file
 - :suffix - suffix of the file, including the extension
 
-If a file is a source or test file is determined by first
+Whether a file is a source or test file is determined by first
 matching the path to the file to the :path property and then
 matching the :prefix and :suffix.
 
