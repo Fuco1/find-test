@@ -132,7 +132,7 @@ the test suffix and vice versa; the same for the prefix.")
     (replace-regexp-in-string
      (ft-definition-path test)
      (ft-definition-path source)
-     file)))
+     file 'fixed-case)))
 
 (defun ft--get-test-file (file)
   (let ((source (ft-source-definition))
@@ -156,7 +156,7 @@ the test suffix and vice versa; the same for the prefix.")
     (replace-regexp-in-string
      (ft-definition-path source)
      (ft-definition-path test)
-     file)))
+     file 'fixed-case)))
 
 (defun ft-get-test-or-source (&optional file)
   (setq file (or file (buffer-file-name)))
