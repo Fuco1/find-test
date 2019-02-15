@@ -185,6 +185,7 @@ the test suffix and vice versa; the same for the prefix.")
     (ft--get-source-file file))
    (:else (user-error "Unable to determine whether the file is source or test"))))
 
+;;;###autoload
 (defun ft-find-test-or-source ()
   (interactive)
   (find-file (ft-get-test-or-source)))
