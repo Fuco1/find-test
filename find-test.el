@@ -1,6 +1,6 @@
 ;;; find-test.el --- Jump between source and test files -*- lexical-binding: t -*-
 
-;; Copyright (C) 2017 Matúš Goljer
+;; Copyright (C) 2017-2019 Matúš Goljer
 
 ;; Author: Matúš Goljer <matus.goljer@gmail.com>
 ;; Maintainer: Matúš Goljer <matus.goljer@gmail.com>
