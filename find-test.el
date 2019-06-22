@@ -91,7 +91,7 @@ the test suffix and vice versa; the same for the prefix.")
   (concat (regexp-quote (ft-definition-suffix definition)) "\\'"))
 
 (defun ft--get-prefix-regexp (definition)
-  (regexp-quote (ft-definition-prefix definition)))
+  (concat "\\`" (regexp-quote (ft-definition-prefix definition))))
 
 (defun ft--definition-match-p (file definition)
   (and (string-match-p (ft-definition-path definition) file)
